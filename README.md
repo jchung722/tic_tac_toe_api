@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/jchung722/tic_tac_toe_api.svg?branch=master)](https://travis-ci.org/jchung722/tic_tac_toe_api)
 # TicTacToeApi
 
 To start your Phoenix server:
