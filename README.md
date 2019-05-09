@@ -14,6 +14,7 @@ To run tests, from the root directory use the command:
 ## Running the Program
 Start phoenix app with:  
 ```$ mix phx.server```  
+  
 View the application at [`localhost:4000`](http://localhost:4000) on your web browser.
 
 ## Dependencies
