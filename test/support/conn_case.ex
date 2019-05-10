@@ -27,11 +27,6 @@ defmodule TicTacToeApiWeb.ConnCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(TicTacToeApi.Repo)
-
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(TicTacToeApi.Repo, {:shared, self()})
-    end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end

@@ -8,8 +8,6 @@ defmodule TicTacToeApi.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Start the Ecto repository
-      TicTacToeApi.Repo,
       # Start the endpoint when the application starts
       TicTacToeApiWeb.Endpoint
       # Starts a worker by calling: TicTacToeApi.Worker.start_link(arg)

@@ -7,9 +7,6 @@
 # General application configuration
 use Mix.Config
 
-config :tic_tac_toe_api,
-  ecto_repos: [TicTacToeApi.Repo]
-
 # Configures the endpoint
 config :tic_tac_toe_api, TicTacToeApiWeb.Endpoint,
   url: [host: "localhost"],
