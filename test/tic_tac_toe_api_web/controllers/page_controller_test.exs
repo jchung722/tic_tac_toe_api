@@ -3,6 +3,6 @@ defmodule TicTacToeApiWeb.PageControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")
-    assert html_response(conn, 200) =~ "Welcome to Phoenix!"
+    assert json_response(conn, 200)["spots"] === ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
   end
 end
