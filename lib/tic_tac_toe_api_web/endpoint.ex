@@ -42,5 +42,7 @@ defmodule TicTacToeApiWeb.Endpoint do
     key: "_tic_tac_toe_api_key",
     signing_salt: "3FvzDDJL"
 
+  plug CORSPlug
+
   plug TicTacToeApiWeb.Router
 end

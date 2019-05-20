@@ -41,7 +41,7 @@ defmodule TicTacToeApi.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:tic_tac_toe_elixir, "~> 1.0", hex: :tictactoe},
-      {:cors_plug, "~> 1.5"}
+      {:cors_plug, "~> 2.0"}
     ]
   end
 end
