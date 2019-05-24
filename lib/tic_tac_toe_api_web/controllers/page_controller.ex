@@ -7,7 +7,9 @@ defmodule TicTacToeApiWeb.PageController do
   end
 
   def game(conn, %{"spots" => spots, "next_player" => next_player, "current_player" => current_player}) do
-    result = Status.result(spots, next_player, current_player)
+    spots_list = String.replace(spots, ~r/[][\",]/, "")
+                 |> String.split(" ")
+    result = Status.result(spots_list, next_player, current_player)
     render(conn, "game.json", result: result)
   end
 
