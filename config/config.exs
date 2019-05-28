@@ -26,7 +26,7 @@ config :phoenix, :json_library, Jason
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
 
-#config cors_plug
+#configures cross origin compatability
 config :cors_plug,
   origin: ["*"],
   max_age: 86400,
