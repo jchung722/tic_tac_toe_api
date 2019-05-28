@@ -7,7 +7,7 @@ defmodule TicTacToeApiWeb.PageView do
 
   def render("status.json", %{result: result}) do
     case result do
-      {:play, next_player, current_player, _spots} ->
+      {:play, _next_player, _current_player, _spots} ->
         %{result: "play", winner: "none"}
       {:win, winner, _spots} ->
         %{result: "win", winner: winner}
