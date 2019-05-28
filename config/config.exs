@@ -22,7 +22,6 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-#configures cross origin compatability
 config :cors_plug,
   origin: ["localhost:3000", "https://fast-hollows-93553.herokuapp.com"],
   max_age: 86400,
