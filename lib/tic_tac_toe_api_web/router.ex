@@ -17,7 +17,7 @@ defmodule TicTacToeApiWeb.Router do
   scope "/", TicTacToeApiWeb do
     pipe_through :browser
     get "/", PageController, :index
-    get "/game", PageController, :game
+    get "/status", PageController, :status
   end
 
   # Other scopes may use custom stacks.

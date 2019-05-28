@@ -5,7 +5,7 @@ defmodule TicTacToeApiWeb.PageView do
     %{spots: board.spots}
   end
 
-  def render("game.json", %{result: result}) do
+  def render("status.json", %{result: result}) do
     case result do
       {:play, next_player, current_player, _spots} ->
         %{result: "play", current_player: current_player, next_player: next_player}

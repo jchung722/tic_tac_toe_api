@@ -6,14 +6,14 @@ defmodule TicTacToeApiWeb.PageController do
     render(conn, "index.json", board: board)
   end
 
-  def game(conn, %{"spots" => spots, "next_player" => next_player, "current_player" => current_player}) do
+  def status(conn, %{"spots" => spots, "next_player" => next_player, "current_player" => current_player}) do
     player1 = %Player{symbol: next_player}
     player2 = %Player{symbol: current_player}
     spots_list = String.replace(spots, ~r/[][\",]/, "")
                  |> String.split(" ")
                  |> swap_symbol_with_player(player1, player2)
     result = Status.result(spots_list, next_player, current_player)
-    render(conn, "game.json", result: result)
+    render(conn, "status.json", result: result)
   end
 
   defp swap_symbol_with_player([], _player1, _player2), do: []
