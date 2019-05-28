@@ -16,41 +16,37 @@ defmodule TicTacToeApiWeb.PageControllerTest do
 
     conn = get(conn, "/status", %{spots: spots, next_player: next_player, current_player: current_player})
 
-    assert json_response(conn, 200)["result"] === "play"
-    assert json_response(conn, 200)["winner"] === "none"
+    assert json_response(conn, 200)["status"] === "in progress"
   end
 
-  test "Gets game status for board with winning row as win", %{conn: conn} do
+  test "Gets game status for board where player X has winning row", %{conn: conn} do
     spots = "[\"X\", \"X\", \"X\", \"O\", \"X\", \"O\", \"O\", \"O\", \"X\"]"
     next_player = "O"
     current_player = "X"
 
     conn = get(conn, "/status", %{spots: spots, next_player: next_player, current_player: current_player})
 
-    assert json_response(conn, 200)["result"] === "win"
-    assert json_response(conn, 200)["winner"] === "X"
+    assert json_response(conn, 200)["status"] === "X wins"
   end
 
-  test "Gets game status for board with winning column as win", %{conn: conn} do
+  test "Gets game status for board where player X has winning column", %{conn: conn} do
     spots = "[\"O\", \"X\", \"O\", \"X\", \"X\", \"O\", \"O\", \"X\", \"X\"]"
     next_player = "O"
     current_player = "X"
 
     conn = get(conn, "/status", %{spots: spots, next_player: next_player, current_player: current_player})
 
-    assert json_response(conn, 200)["result"] === "win"
-    assert json_response(conn, 200)["winner"] === "X"
+    assert json_response(conn, 200)["status"] === "X wins"
   end
 
-  test "Gets game status for board with winning diagonal as win", %{conn: conn} do
+  test "Gets game status for board where player O has winning diagonal", %{conn: conn} do
     spots = "[\"O\", \"X\", \"O\", \"X\", \"O\", \"O\", \"O\", \"X\", \"X\"]"
     next_player = "X"
     current_player = "O"
 
     conn = get(conn, "/status", %{spots: spots, next_player: next_player, current_player: current_player})
 
-    assert json_response(conn, 200)["result"] === "win"
-    assert json_response(conn, 200)["winner"] === "O"
+    assert json_response(conn, 200)["status"] === "O wins"
   end
 
   test "Gets game status for full board with no win as tie", %{conn: conn} do
@@ -60,7 +56,6 @@ defmodule TicTacToeApiWeb.PageControllerTest do
 
     conn = get(conn, "/status", %{spots: spots, next_player: next_player, current_player: current_player})
 
-    assert json_response(conn, 200)["result"] === "draw"
-    assert json_response(conn, 200)["winner"] === "none"
+    assert json_response(conn, 200)["status"] === "draw"
   end
 end
