@@ -23,7 +23,7 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 config :cors_plug,
-  origin: ["localhost:3000", "https://fast-hollows-93553.herokuapp.com"],
+  origin: ["*"],
   max_age: 86400,
   methods: ["GET", "POST"]
 
