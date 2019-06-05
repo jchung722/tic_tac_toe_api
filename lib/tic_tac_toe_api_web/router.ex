@@ -10,14 +10,13 @@ defmodule TicTacToeApiWeb.Router do
   end
 
   pipeline :api do
-    plug CORSPlug, origin: "*"
     plug :accepts, ["json"]
   end
 
   scope "/", TicTacToeApiWeb do
     pipe_through :browser
-
     get "/", PageController, :index
+    get "/status", PageController, :status
   end
 
   # Other scopes may use custom stacks.
