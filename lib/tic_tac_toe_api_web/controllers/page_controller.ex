@@ -7,16 +7,21 @@ defmodule TicTacToeApiWeb.PageController do
   end
 
   def status(conn, %{"spots" => spots, "next_player" => next_player, "current_player" => current_player}) do
-    result = build_result(spots, next_player, current_player)
+    result = board_with_players(spots, next_player, current_player)
+             |> Status.result(next_player, current_player)
     render(conn, "status.json", result: result)
   end
 
-  defp build_result(spots, next_player, current_player) do
-    player1 = %Player{symbol: next_player}
-    player2 = %Player{symbol: current_player}
+  defp board_with_players(spots, player1, player2) do
+    player1 = %Player{symbol: player1}
+    player2 = %Player{symbol: player2}
     spots_list = Jason.decode!(spots)
                  |> ReactAdapter.swap_marks_with_players(player1, player2)
-    Status.result(spots_list, next_player, current_player)
   end
 
+  def computer(conn, %{"spots" => spots, "seed" => seed, "computer" => computer, "human" => human}) do
+    move = board_with_players(spots, computer, human)
+           |> Computer.random_move(seed)
+    render(conn, "computer.json", move: move)
+  end
 end

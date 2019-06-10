@@ -17,4 +17,8 @@ defmodule TicTacToeApiWeb.PageView do
         %{status: "draw"}
     end
   end
+
+  def render("computer.json", %{move: move}) do
+    %{move: move}
+  end
 end
