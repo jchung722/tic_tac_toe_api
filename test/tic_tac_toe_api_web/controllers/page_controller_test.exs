@@ -64,7 +64,7 @@ defmodule TicTacToeApiWeb.PageControllerTest do
     computer = "X"
     human = "O"
 
-    conn = get(conn, "/computer", %{spots: spots, seed: :rand.seed(:exs1024, {1, 2, 3}), computer: computer, human: human})
+    conn = get(conn, "/computer", %{spots: spots, computer: computer, human: human})
 
     assert json_response(conn, 200)["move"] === "4"
   end
@@ -74,7 +74,7 @@ defmodule TicTacToeApiWeb.PageControllerTest do
     computer = "X"
     human = "O"
 
-    conn = get(conn, "/computer", %{spots: spots, seed: :rand.seed(:exs1024, {1, 2, 3}), computer: computer, human: human})
+    conn = get(conn, "/computer", %{spots: spots, computer: computer, human: human})
 
     assert json_response(conn, 200)["move"] === "8"
   end
@@ -84,7 +84,7 @@ defmodule TicTacToeApiWeb.PageControllerTest do
     computer = "X"
     human = "O"
 
-    conn = get(conn, "/computer", %{spots: spots, seed: :rand.seed(:exs1024, {1, 2, 3}), computer: computer, human: human})
+    conn = get(conn, "/computer", %{spots: spots, computer: computer, human: human})
 
     assert json_response(conn, 200)["move"] === "8"
   end

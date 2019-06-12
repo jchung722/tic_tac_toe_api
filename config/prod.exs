@@ -17,6 +17,8 @@ force_ssl: [rewrite_on: [:x_forwarded_proto]],
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :tic_tac_toe_api, seed: ""
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
