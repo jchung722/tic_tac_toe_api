@@ -9,4 +9,4 @@ config :tic_tac_toe_api, TicTacToeApiWeb.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-config :tic_tac_toe_api, seed: {1, 2, 3}
+config :tic_tac_toe_api, env: Mix.env
