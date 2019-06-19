@@ -40,7 +40,7 @@ defmodule TicTacToeApi.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:tic_tac_toe_elixir, "~> 1.1", hex: :tictactoe},
+      {:tic_tac_toe_elixir, "~> 1.2", hex: :tictactoe},
       {:cors_plug, "~> 2.0"}
     ]
   end

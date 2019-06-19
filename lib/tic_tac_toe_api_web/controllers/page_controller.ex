@@ -35,4 +35,11 @@ defmodule TicTacToeApiWeb.PageController do
   defp get_computer_move(board, _env) do
     Computer.random_move(board)
   end
+
+  def winner(conn, %{"spots" => spots}) do
+    win_result = Jason.decode!(spots)
+                 |> Status.winning_marks
+    render(conn, "winner.json", win_result: win_result)
+  end
+
 end

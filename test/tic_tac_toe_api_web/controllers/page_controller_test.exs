@@ -89,4 +89,44 @@ defmodule TicTacToeApiWeb.PageControllerTest do
     assert json_response(conn, 200)["move"] === "8"
   end
 
+  test "returns no indices for a new game", %{conn: conn} do
+    spots = "[\"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\"]"
+
+    conn = get(conn, "/winner", %{spots: spots})
+
+    assert json_response(conn, 200)["index_list"] == []
+  end
+
+  test "returns winning indices for a winner in a row", %{conn: conn} do
+    spots = "[\"X\", \"X\", \"X\", \"O\", \"X\", \"O\", \"O\", \"O\", \"X\"]"
+
+    conn = get(conn, "/winner", %{spots: spots})
+
+    assert json_response(conn, 200)["index_list"] == [0, 1, 2]
+  end
+
+  test "returns winning indices for a winner in a column", %{conn: conn} do
+    spots = "[\"O\", \"X\", \"O\", \"X\", \"X\", \"O\", \"O\", \"X\", \"X\"]"
+
+    conn = get(conn, "/winner", %{spots: spots})
+
+    assert json_response(conn, 200)["index_list"] == [1, 4, 7]
+  end
+
+  test "returns winning indices for a winner in a diagonal", %{conn: conn} do
+    spots = "[\"O\", \"X\", \"O\", \"X\", \"O\", \"O\", \"O\", \"X\", \"X\"]"
+
+    conn = get(conn, "/winner", %{spots: spots})
+
+    assert json_response(conn, 200)["index_list"] == [2, 4, 6]
+  end
+
+  test "returns no winning indices for a game that is a draw", %{conn: conn} do
+    spots = "[\"O\", \"X\", \"O\", \"X\", \"O\", \"X\", \"X\", \"O\", \"X\"]"
+
+    conn = get(conn, "/winner", %{spots: spots})
+
+    assert json_response(conn, 200)["index_list"] == []
+  end
+
 end

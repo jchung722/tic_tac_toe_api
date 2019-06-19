@@ -18,6 +18,8 @@ defmodule TicTacToeApiWeb.Router do
     get "/", PageController, :index
     get "/status", PageController, :status
     get "/computer", PageController, :computer
+    get "/winner", PageController, :winner
+
   end
 
 
