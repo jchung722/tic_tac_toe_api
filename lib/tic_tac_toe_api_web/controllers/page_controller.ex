@@ -19,4 +19,10 @@ defmodule TicTacToeApiWeb.PageController do
     Status.result(spots_list, next_player, current_player)
   end
 
+  def winner(conn, %{"spots" => spots}) do
+    win_result = Jason.decode!(spots)
+                 |> Status.winning_marks
+    render(conn, "winner.json", win_result: win_result)
+  end
+
 end
