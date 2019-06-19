@@ -22,6 +22,8 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :tic_tac_toe_api, env: Mix.env
+
 config :cors_plug,
   origin: ["*"],
   max_age: 86400,
