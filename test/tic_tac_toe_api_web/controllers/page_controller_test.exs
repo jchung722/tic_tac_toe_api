@@ -59,6 +59,36 @@ defmodule TicTacToeApiWeb.PageControllerTest do
     assert json_response(conn, 200)["status"] === "draw"
   end
 
+  test "Computer gets random move from available spots on new board", %{conn: conn} do
+    spots = "[\"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\"]"
+    computer = "X"
+    human = "O"
+
+    conn = get(conn, "/computer", %{spots: spots, computer: computer, human: human})
+
+    assert json_response(conn, 200)["move"] === "4"
+  end
+
+  test "Computer gets last available move on board", %{conn: conn} do
+    spots = "[\"X\", \"O\", \"X\", \"O\", \"X\", \"O\", \"X\", \"8\", \"O\"]"
+    computer = "X"
+    human = "O"
+
+    conn = get(conn, "/computer", %{spots: spots, computer: computer, human: human})
+
+    assert json_response(conn, 200)["move"] === "8"
+  end
+
+  test "Computer gets available move on a partially filled board", %{conn: conn} do
+    spots = "[\"1\", \"O\", \"3\", \"4\", \"X\", \"O\", \"X\", \"8\", \"O\"]"
+    computer = "X"
+    human = "O"
+
+    conn = get(conn, "/computer", %{spots: spots, computer: computer, human: human})
+
+    assert json_response(conn, 200)["move"] === "8"
+  end
+
   test "returns no indices for a new game", %{conn: conn} do
     spots = "[\"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\"]"
 
@@ -98,4 +128,5 @@ defmodule TicTacToeApiWeb.PageControllerTest do
 
     assert json_response(conn, 200)["index_list"] == []
   end
+
 end

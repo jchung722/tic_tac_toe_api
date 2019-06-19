@@ -18,7 +18,12 @@ defmodule TicTacToeApiWeb.PageView do
     end
   end
 
+  def render("computer.json", %{move: move}) do
+    %{move: move}
+  end
+
   def render("winner.json", %{win_result: win_result}) do
     %{index_list: win_result}
   end
+
 end
